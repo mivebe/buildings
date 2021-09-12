@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "name": "Windsor",
+        "area": 200,
+        "location": "London",
+        "imageID": "london.jpg"
+    },
+    {
+        "id": 12,
+        "name": "Babakvets",
+        "area": 200,
+        "location": "London",
+        "imageID": "london.jpg"
+    }
+]
