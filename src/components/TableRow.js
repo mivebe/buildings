@@ -33,15 +33,15 @@ const TableRow = ({ id, name, area, location, imageID }) => {
 
             <div style={styles.box}>
                 {imageID ?
-                    <img style={styles.img} src={process.env.PUBLIC_URL + imageID} alt='uploaded' />
+                    <img style={styles.img} src={process.env.PUBLIC_URL + `/images/${imageID}`} alt='uploaded' />
                     :
-                    <img style={styles.img} src={process.env.PUBLIC_URL + 'placeholderImage.png'} alt='placeholder' />
+                    <img style={styles.img} src={process.env.PUBLIC_URL + '/images/placeholderImage.png'} alt='placeholder' />
                 }
             </div>
 
             <div style={styles.box}>
-                <img style={styles.icon} src={process.env.PUBLIC_URL + "edit.png"} alt='edit' onClick={() => setModalOpen(true)} />
-                <img style={styles.icon} src={process.env.PUBLIC_URL + "delete.png"} alt='delete' onClick={onDelete} />
+                <img style={styles.icon} src={process.env.PUBLIC_URL + "/icons/edit.png"} alt='edit' onClick={() => setModalOpen(true)} />
+                <img style={styles.icon} src={process.env.PUBLIC_URL + "/icons/delete.png"} alt='delete' onClick={onDelete} />
             </div>
 
             {modalOpen && <Modal

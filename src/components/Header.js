@@ -8,7 +8,7 @@ const Header = () => {
             </div>
 
             <div style={styles.imageContainer}>
-                <img style={styles.img} src={process.env.PUBLIC_URL + "avatar.png"} alt="avatar" />
+                <img style={styles.img} src={process.env.PUBLIC_URL + "/images/avatar.png"} alt="avatar" />
             </div>
         </header>
     )

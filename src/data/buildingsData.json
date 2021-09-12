@@ -7,15 +7,22 @@
         "imageID": "london.jpg"
     },
     {
-        "id": 12,
-        "name": "Divakovets",
-        "area": 200,
-        "location": "London",
-        "imageID": "london.jpg"
+        "id": 2,
+        "name": "Astoria",
+        "area": 300,
+        "location": "Paris",
+        "imageID": "paris.jpg"
     },
     {
-        "id": 15,
-        "name": "Starost",
+        "id": 3,
+        "name": "Blue Lagoon",
+        "area": 150,
+        "location": "Amsterdam",
+        "imageID": "amsterdam.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Mladost",
         "area": 200,
         "location": "N/A",
         "imageID": null

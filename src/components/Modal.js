@@ -49,7 +49,7 @@ const Modal = ({ data, onClose, onAdd, onEdit }) => {
                         Image
                     </div>
                     <div style={styles.box}>
-                        <img style={styles.icon} src={process.env.PUBLIC_URL + "close.png"} alt="add" onClick={onClose} />
+                        <img style={styles.icon} src={process.env.PUBLIC_URL + "/icons/close.png"} alt="add" onClick={onClose} />
                     </div>
                 </section>
                 <section style={styles.row}>
@@ -69,7 +69,7 @@ const Modal = ({ data, onClose, onAdd, onEdit }) => {
                 </section>
                 <section style={styles.row} >
                     <div style={styles.box}>
-                        <img style={styles.icon} src={process.env.PUBLIC_URL + 'upload.png'} alt="building" onClick={() => fileRef.current.click()} />
+                        <img style={styles.icon} src={process.env.PUBLIC_URL + '/icons/upload.png'} alt="building" onClick={() => fileRef.current.click()} />
                     </div>
 
                     <div style={styles.box}>
@@ -77,13 +77,13 @@ const Modal = ({ data, onClose, onAdd, onEdit }) => {
                             preview ?
                                 <img style={styles.img} src={preview} alt="preview" /> :
                                 data && data.imageID ?
-                                    <img style={styles.img} src={process.env.PUBLIC_URL + data.imageID} alt="building" /> :
-                                    <img style={styles.img} src={process.env.PUBLIC_URL + 'placeholderImage.png'} alt="placeholder" />
+                                    <img style={styles.img} src={process.env.PUBLIC_URL + `/images/${data.imageID}`} alt="building" /> :
+                                    <img style={styles.img} src={process.env.PUBLIC_URL + '/images/placeholderImage.png'} alt="placeholder" />
                         }
                     </div>
 
                     <div style={styles.box}>
-                        <img src={process.env.PUBLIC_URL + 'check.png'} alt="submit" style={styles.icon} onClick={() => {
+                        <img style={styles.icon} src={process.env.PUBLIC_URL + '/icons/check.png'} alt="submit" onClick={() => {
                             if (!formRef || !formRef.current.checkValidity()) {
                                 return
                             }

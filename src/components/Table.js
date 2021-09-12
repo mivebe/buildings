@@ -36,7 +36,7 @@ const Table = () => {
                     Image
                 </div>
                 <div style={styles.box}>
-                    <img style={styles.icon} src={process.env.PUBLIC_URL + "add.png"} alt="add" onClick={() => setModalOpen(true)} />
+                    <img style={styles.icon} src={process.env.PUBLIC_URL + "/icons/add.png"} alt="add" onClick={() => setModalOpen(true)} />
                 </div>
             </div>
 
