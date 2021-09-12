@@ -8,9 +8,16 @@
     },
     {
         "id": 12,
-        "name": "Babakvets",
+        "name": "Divakovets",
         "area": 200,
         "location": "London",
         "imageID": "london.jpg"
+    },
+    {
+        "id": 15,
+        "name": "Starost",
+        "area": 200,
+        "location": "N/A",
+        "imageID": null
     }
 ]

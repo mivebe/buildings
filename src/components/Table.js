@@ -1,28 +1,26 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { BuildingsContext } from "../contexts/BuildingsContext"
 import TableRow from "./TableRow"
+import Modal from "./Modal"
 import styles from "../styles/buildingsStyles"
 
 const Table = () => {
 
-    const { buildings, fetchBuildings } = useContext(BuildingsContext)
+    const { buildings, fetchBuildings, addBuilding } = useContext(BuildingsContext)
     console.log("asd", buildings);
+    const [modalOpen, setModalOpen] = useState(false)
 
     useEffect(() => {
         fetchBuildings()
 
-    }, [fetchBuildings])
-    // const data = [
-    //     {
-    //         id: 1,
-    //         name: "Windsor",
-    //         area: 200,
-    //         location: "London",
-    //         imageID: "london.jpg"
-    //     }
-    // ]
+    }, [])
+
     return (
         <div className="table" style={styles.table}>
+            {modalOpen && <Modal
+                onClose={() => setModalOpen(false)}
+                onAdd={addBuilding}
+            />}
             <div className="headerRow" style={styles.headingRow}>
                 <div style={styles.box}>
                     Id
@@ -40,9 +38,10 @@ const Table = () => {
                     Image
                 </div>
                 <div style={styles.box}>
-                    Actions
+                    <img style={styles.icon} src={process.env.PUBLIC_URL + "add.png"} alt="add" onClick={() => setModalOpen(true)} />
                 </div>
             </div>
+
             {buildings && buildings.map(el => <TableRow
                 key={el.id}
                 id={el.id}

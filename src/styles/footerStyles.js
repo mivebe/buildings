@@ -35,6 +35,7 @@ const footer = {
         bottom: '0',
         background: `rgba(255,255,255, 0.9)`,
         backdropFilter: 'blur(5px)',
+        overflow: 'hidden'
     }
 }
 

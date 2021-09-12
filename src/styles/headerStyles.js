@@ -16,13 +16,14 @@ const header = {
     imageContainer: {
         display: 'flex',
         width: '5rem',
-        height: '100%'
+        height: '100%',
+        overflow: 'hidden'
     },
 
     img: {
-        width: "5rem",
-        height: "5rem",
-        objectFit: "contain"
+        width: "4rem",
+        height: "4rem",
+        overflow: 'hidden'
     },
 
 
@@ -35,7 +36,7 @@ const header = {
         alignItems: 'center',
         top: '0',
         background: `rgba(255,255,255, 0.9)`,
-        backdropFilter: 'blur(5px)'
+        backdropFilter: 'blur(5px)',
     }
 }
 

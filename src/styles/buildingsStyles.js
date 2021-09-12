@@ -32,12 +32,21 @@ const building = {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: '200px'
+        marginBottom: '200px',
+        overflow: 'hidden'
+    },
+
+    modal: {
+        position: "absolute",
+        top: 0,
+        left: 0,
+        backgroundColor: "darkgrey",
+        zIndex: '100'
     },
 
     row: {
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         alignItems: 'center',
         width: '100%',
         maxWidth: '100vw',
@@ -67,8 +76,12 @@ const building = {
         background: 'rgba(255,255,255, 0)'
     },
 
+    icon: {
+        maxWidth: '25px'
+    },
+
     img: {
-        maxWidth: '50px'
+        maxWidth: '80px'
     },
 
     rightButton: {
