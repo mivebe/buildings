@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useCallback, useContext, useState } from "react"
 import { BuildingsContext } from "../contexts/BuildingsContext"
 import styles from "../styles/buildingsStyles"
 import Modal from "./Modal"
@@ -8,13 +8,11 @@ const TableRow = ({ id, name, area, location, imageID }) => {
     const { editBuilding, deleteBuilding } = useContext(BuildingsContext)
     const [modalOpen, setModalOpen] = useState(false)
 
-    const onDelete = () => {
-        deleteBuilding(id)
-    }
+    const onDelete = useCallback(() => {
+        deleteBuilding(id)                    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [id])
 
     return (
-
-
         <div className="row" style={styles.row}>
 
             <div style={styles.box}>
@@ -37,7 +35,7 @@ const TableRow = ({ id, name, area, location, imageID }) => {
                 {imageID ?
                     <img style={styles.img} src={process.env.PUBLIC_URL + imageID} alt='uploaded' />
                     :
-                    <img style={styles.img} src={process.env.PUBLIC_URL + 'placeholderImage.jpg'} alt='placeholder' />
+                    <img style={styles.img} src={process.env.PUBLIC_URL + 'placeholderImage.png'} alt='placeholder' />
                 }
             </div>
 

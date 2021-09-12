@@ -5,7 +5,7 @@ import { BuildingsProvider } from "../contexts/BuildingsContext";
 
 const Buildings = () => {
     return (
-        <section>
+        <section style={{ display: "flex", alignItems: "center" }}>
             <BuildingsProvider>
                 <Table />
             </BuildingsProvider>

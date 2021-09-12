@@ -1,16 +1,14 @@
 import { useState, useEffect, useRef } from "react"
-import styles from "../styles/buildingsStyles"
+import ReactDOM from 'react-dom'
+import styles from "../styles/modalStyles"
 
 const Modal = ({ data, onClose, onAdd, onEdit }) => {
-
     const [image, setImage] = useState(null)
     const [preview, setPreview] = useState(null)
     const [newData, setNewData] = useState({})
 
-    const nameRef = useRef(null)
-    const areaRef = useRef(null)
-    const locationRef = useRef(null)
-    const imageRef = useRef(null)
+    const formRef = useRef(null)
+    const fileRef = useRef(null)
 
     useEffect(() => {
         if (image) {
@@ -25,62 +23,86 @@ const Modal = ({ data, onClose, onAdd, onEdit }) => {
 
     }, [image])
 
-    return (
-        <div style={styles.modal}>
-            <div className="headerRow" style={styles.row}>
-                <div style={styles.box}>
-                    Name
-                </div>
-                <div style={styles.box}>
-                    Area
-                </div>
-                <div style={styles.box}>
-                    Location
-                </div>
-                <div style={styles.box}>
-                    Image
-                </div>
-                <div style={styles.box}>
-                    <img style={styles.icon} src={process.env.PUBLIC_URL + "close.png"} alt="add" onClick={() => { onClose() }} />
-                </div>
+    const handleFormChange = (e) => {
+        const name = e.target.name
+        const value = e.target.value
+
+        if (name !== 'image') {
+            setNewData({ ...newData, [name]: value })
+        }
+    }
+
+    return ReactDOM.createPortal(
+        <overlay style={styles.overlay}>
+            <div style={styles.modal}>
+                <section style={styles.row}>
+                    <div style={styles.box}>
+                        Name
+                    </div>
+                    <div style={styles.box}>
+                        Area
+                    </div>
+                    <div style={styles.box}>
+                        Location
+                    </div>
+                    <div style={styles.box}>
+                        Image
+                    </div>
+                    <div style={styles.box}>
+                        <img style={styles.icon} src={process.env.PUBLIC_URL + "close.png"} alt="add" onClick={onClose} />
+                    </div>
+                </section>
+                <section style={styles.row}>
+                    <form ref={formRef} onChange={handleFormChange} onSubmit={e => e.preventDefault()}>
+                        <input type="text" id="name" name="name" style={styles.input} defaultValue={data ? data.name : ""} required />
+
+                        <input type="text" id="area" name="area" style={styles.input} defaultValue={data ? data.id : ""} required />
+
+                        <input type="text" id="location" name="location" style={styles.input} defaultValue={data ? data.id : ""} />
+
+                        <input type="file" id="image" name="image" ref={fileRef} style={styles.file} onChange={(e) => {
+                            setImage(e.target.files[0]);
+                            setNewData({ ...newData, imageID: e.target.files[0].name })
+                        }} />
+
+                    </form>
+                </section>
+                <section style={styles.row} >
+                    <div style={styles.box}>
+                        <img style={styles.icon} src={process.env.PUBLIC_URL + 'upload.png'} alt="building" onClick={() => fileRef.current.click()} />
+                    </div>
+
+                    <div style={styles.box}>
+                        {
+                            preview ?
+                                <img style={styles.img} src={preview} alt="preview" /> :
+                                data && data.imageID ?
+                                    <img style={styles.img} src={process.env.PUBLIC_URL + data.imageID} alt="building" /> :
+                                    <img style={styles.img} src={process.env.PUBLIC_URL + 'placeholderImage.png'} alt="placeholder" />
+                        }
+                    </div>
+
+                    <div style={styles.box}>
+                        <img src={process.env.PUBLIC_URL + 'check.png'} alt="submit" style={styles.icon} onClick={() => {
+                            if (!formRef || !formRef.current.checkValidity()) {
+                                return
+                            }
+
+                            if (onAdd) {
+                                onAdd({ ...newData, id: Date.now() });
+                            }
+
+                            if (onEdit) {
+                                onEdit({ ...newData, id: data.id })
+                            }
+
+                            onClose()
+                        }} />
+                    </div>
+                </section>
             </div>
-            <section style={styles.row}>
-                <form className="asd" onSubmit={e => e.preventDefault()}>
-                    <input type="text" id="name" name="name" style={styles.box} ref={nameRef} onChange={e =>
-                        setNewData({ ...newData, name: e.target.value })} />
 
-                    <input type="text" id="area" name="area" style={styles.box} ref={areaRef} onChange={e =>
-                        setNewData({ ...newData, area: e.target.value })} />
-
-                    <input type="text" id="location" name="location" style={styles.box} ref={locationRef} onChange={e =>
-                        setNewData({ ...newData, location: e.target.value })} />
-
-                    <input type="file" id="image" name="image" style={styles.box} ref={imageRef} onChange={(e) => {
-                        setImage(e.target.files[0]);
-                        setNewData({ ...newData, imageID: e.target.files[0].name })
-                    }} />
-
-                </form>
-
-                <div style={styles.box}>
-                    {preview && <img style={styles.img} src={preview} alt="preview" />}
-                </div>
-
-                <div>
-                    <button onClick={() => {
-                        if (onAdd) {
-                            onAdd({ ...newData, id: 8 });
-                        }
-
-                        if (onEdit) {
-                            onEdit({ ...newData, id: data.id })
-                        }
-
-                        onClose()
-                    }}>Submit</button>
-                </div>
-            </section>
-        </div>
+        </overlay>, document.querySelector('body')
     )
 }
 

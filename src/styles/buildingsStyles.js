@@ -32,16 +32,9 @@ const building = {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: '200px',
+        marginTop: '24px',
+        marginLeft: '24px',
         overflow: 'hidden'
-    },
-
-    modal: {
-        position: "absolute",
-        top: 0,
-        left: 0,
-        backgroundColor: "darkgrey",
-        zIndex: '100'
     },
 
     row: {
@@ -50,10 +43,10 @@ const building = {
         alignItems: 'center',
         width: '100%',
         maxWidth: '100vw',
-        padding: '4rem 0 2rem 0',
+        padding: '1rem 0 2rem 0',
         borderBottom: '1px solid rgba(0,0,0, 0.1)',
         position: 'relative',
-        overflow: 'visible',
+        alignSelf: 'center'
     },
 
     headingRow: {
@@ -77,38 +70,13 @@ const building = {
     },
 
     icon: {
+        cursor: 'pointer',
         maxWidth: '25px'
     },
 
     img: {
         maxWidth: '80px'
     },
-
-    rightButton: {
-        position: 'absolute',
-        top: '0',
-        right: '50%',
-        transform: 'translateX(50%)',
-        border: '1px solid rgba(0,0,0, 0.1)',
-        padding: '.5rem',
-        borderRadius: '0 0 5px 5px',
-        fontSize: '12px',
-        textAlign: 'center',
-        background: 'rgba(255,255,255, 0.9)'
-    },
-
-    leftButton: {
-        position: 'absolute',
-        top: '0',
-        left: '0',
-        cursor: 'pointer',
-        borderRight: '1px solid rgba(0,0,0, 0.1)',
-        borderBottom: '1px solid rgba(0,0,0, 0.1)',
-        padding: '.5rem',
-        borderRadius: '0 0 5px 0',
-        color: 'red',
-        fontSize: '12px'
-    }
 }
 
 

@@ -1,8 +1,5 @@
-
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
-
 import "./styles/globalStyles.css"
-
 import Home from "./pages/Home"
 import Buildings from "./pages/Buildings";
 import Footer from "./components/Footer";
@@ -28,7 +25,6 @@ function App() {
         </Switch>
 
         <Footer />
-
       </Router>
     </>
   );

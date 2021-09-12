@@ -7,21 +7,19 @@ import styles from "../styles/buildingsStyles"
 const Table = () => {
 
     const { buildings, fetchBuildings, addBuilding } = useContext(BuildingsContext)
-    console.log("asd", buildings);
     const [modalOpen, setModalOpen] = useState(false)
 
     useEffect(() => {
-        fetchBuildings()
-
+        fetchBuildings()                   // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
-        <div className="table" style={styles.table}>
+        <table style={styles.table}>
             {modalOpen && <Modal
                 onClose={() => setModalOpen(false)}
                 onAdd={addBuilding}
             />}
-            <div className="headerRow" style={styles.headingRow}>
+            <div style={styles.headingRow}>
                 <div style={styles.box}>
                     Id
                 </div>
@@ -50,7 +48,7 @@ const Table = () => {
                 location={el.location || "N/A"}
                 imageID={el.imageID || null}
             />)}
-        </div>
+        </table>
     )
 }
 

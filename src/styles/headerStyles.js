@@ -14,9 +14,7 @@ const header = {
     },
 
     imageContainer: {
-        display: 'flex',
         width: '5rem',
-        height: '100%',
         overflow: 'hidden'
     },
 
